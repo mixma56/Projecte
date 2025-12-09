@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        :root {
+            /*Color Primario*/
+            --color_blue_gray: #5f7e8d;
+            /*Color Secundario*/
+            --color_turquoise_gray: #5F8D85;
+            /*Color Terciario*/
+            --color_dark_blue_gray: #5F678D;
+
+            /*Fuente Primaria*/
+            --font-primary: "Poppins", sans-serif;
+        }
+        *{
+            font-family: var(--font-primary);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden overflow-y-auto relative">
+    <section class="bg-[url('images/img_section_principal.jpg')] bg-cover bg-center h-146 relative">
+
+        <header
+            class="flex flex-row  bg-[var(--color_blue_gray)]/80 p-4 text-white items-center font-[var(--font-primary)] font-bold text-lg ">
+            <div class="basis-1/4">
+                <img src="images/logo.png" alt="logo_tirallongues" />
+            </div>
+
+            <div class="basis-2/4 text-center text-4xl uppercase ">
+                <h1>Tirallongues de Manresa</h1>
+            </div>
+
+            <div class=" flex-grow flex justify-center items-center p-2  bg-white/25 rounded-lg hover:bg-white/40 hover:cursor-pointer">
+                <select class="appearance-none focus:outline-none focus:underline focus:ring-0 " id="opciones-select" name="opciones">
+                    <option value="" hidden selected>Selecciona idioma</option>
+                    <option class="text-black  bg-red-100" value="opc1">Català</option>
+                    <option class="text-black" value="opc2">Castellà</option>
+                    <option class="text-black" value="opc3">English</option>
+                </select>
+            </div>
+        </header>
+
+        <nav
+            class="flex flex-row p-4 text-white font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-5">
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                <select
+                    class="w-23 appearance-none focus:outline-none focus:underline focus:ring-0 bg-transparent uppercase"
+                    id="colla-select" name="colla">
+                    <option value="" hidden selected>La Colla</option>
+                    <option class="text-black" value="col1">Qui som?</option>
+                    <option class="text-black" value="col2">Qui fem?</option>
+                    <option class="text-black" value="col3">Integrants de gestió</option>
+                    <option class="text-black" value="col4">Música</option>
+                </select>
+            </a>
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                <p>Serveis i Contractació</p>
+            </a>
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                <p>Notícies</p>
+            </a>
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                <p>Contacte</p>
+            </a>
+        </nav>
+         
+        <div class="w-196 h-50 bg-transparent mx-auto mt-15 p-20 flex flex-row justify-center items-center space-x-10">
+            <!--absolute top-80 right-225-->
+            <div class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl items-center hover:cursor-pointer hover:bg-gray-800"> 
+                <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)] m-8">Vine a l'assaig</h1>
+            </div>
+
+            <!--absolute top-80 right-150-->
+            <div class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl items-center hover:cursor-pointer hover:bg-gray-800">
+                <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)] m-8 ">Fes-te soci!</h1>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <main class="h-126 bg-white flex flex-row p-8 justify-between">
+
+            <h2 class="text-5xl font-[var(--font-primary)] font-bold self-start ml-35 order-1">Properes actuacions</h2>
+
+            <div class=" w-21 h-21 border-black rounded-sm  bg-white shadow-2xl order-2">
+
+
+            </div>
+
+            
+            
+        </main>
+
+    </section>
+
+    <aside></aside>
+
+    <footer></footer>
+</body>
+
+</html>

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="icon" type="image/gif" href="images/icono.gif">
+    <title>Tirallongues de Manresa</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -28,25 +29,25 @@
 </head>
 
 <body class="overflow-x-hidden overflow-y-auto relative">
-    <section class="bg-[url('images/img_section_principal.jpg')] bg-cover bg-center h-146 relative border-b-4">
+    <section class="bg-[url('images/img_section_principal.jpg')] bg-cover bg-center h-146 relative">
         <header
-            class="flex flex-row bg-[var(--color_blue_gray)]/95 p-4 text-white items-center font-[var(--font-primary)] font-bold text-lg">
+            class="flex flex-row bg-[var(--color_blue_gray)]/95 p-4 text-white justify-center items-center font-[var(--font-primary)] font-bold text-lg">
             <div class="basis-1/4">
-                <img src="images/logo.png" alt="logo_tirallongues" />
+                <a href="WebPrincipal-Tirallongues.html"><img src="images/logo.png" alt="logo_tirallongues" /></a>
             </div>
 
-            <div class="basis-2/4 text-center text-4xl uppercase">
+            <div class="basis-2/4 text-center m-auto text-4xl uppercase">
                 <h1>Tirallongues de Manresa</h1>
             </div>
 
-            <div class="w-36 flex justify-center items-center p-2 rounded-full border border-white/50 bg-white/10 ml-auto 
+            <div class="w-50 flex justify-center items-center p-2 rounded-full border border-white/50 bg-white/10 mx-auto
                 hover:bg-white/20 hover:border-white transition-colors duration-200 cursor-pointer shadow-md">
                 <select class="w-full appearance-none focus:outline-none focus:underline focus:ring-0 text-center"
                     id="opciones-select" name="opciones">
                     <option value="" hidden selected class="text-xs">Idioma</option>
-                    <option class="text-black bg-red-100" value="opc1">Català</option>
-                    <option class="text-black" value="opc2">Castellà</option>
-                    <option class="text-black" value="opc3">English</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90 hover:bg-white hover:text-black transition-colors" value="opc1">Català</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90" value="opc2">Castellà</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90" value="opc3">English</option>
                 </select>
             </div>
         </header>
@@ -54,29 +55,27 @@
         <nav
             class="flex flex-row p-4 text-white font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-5">
             <a href="#"
-                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                class="flex justify-center items-center py-2 bg-[var(--color_turquoise_gray)]/85 border-2 border-black/10 hover:bg-[var(--color_turquoise_gray)] hover:border-white rounded-full">
                 <select
-                    class="w-23 appearance-none focus:outline-none focus:underline focus:ring-0 bg-transparent uppercase"
+                    class="w-full text-center appearance-none focus:outline-none focus:underline focus:ring-0 bg-transparent"
                     id="colla-select" name="colla">
-                    <option value="" hidden selected>La Colla</option>
-                    <option class="text-black" value="col1">Qui som?</option>
-                    <option class="text-black" value="col2">Qui fem?</option>
-                    <option class="text-black" value="col3">
-                        Integrants de gestió
-                    </option>
-                    <option class="text-black" value="col4">Música</option>
+                    <option value="" hidden selected>LA COLLA</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col1">Qui som?</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col2">Qui fem?</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col3">Integrants de gestió</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col4">Música</option>
                 </select>
             </a>
             <a href="#"
-                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
                 <p>Serveis i Contractació</p>
             </a>
-            <a href="#"
-                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+            <a href="Noticies.html"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
                 <p>Notícies</p>
             </a>
             <a href="#"
-                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)]/65 rounded-full">
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
                 <p>Contacte</p>
             </a>
         </nav>
@@ -168,7 +167,7 @@
 
     </section>
 
-    <aside class="flex justify-center bg-gray-50 py-16">
+    <aside class="flex justify-center bg-gray-100 py-16">
         <div class="flex flex-row w-full max-w-6xl items-center justify-between p-3 mx-auto">
 
             <div class="flex items-center space-x-4">
@@ -227,32 +226,34 @@
     <footer>
         <div class="bg-[var(--color_dark_blue_gray)] text-white p-12 shadow-inner">
 
-            <div class="flex justify-center w-full max-w-6xl mx-auto border-b border-white/20 pb-8 mb-8 space-x-20">
+            <div class="flex flex-row justify-center w-full max-w-6xl mx-auto border-b border-white/20 mb-8 pb-8 space-x-60">
 
-                <div class="flex flex-col space-y-3">
-                    <h3 class="text-xl font-bold uppercase mb-4 border-b-2 border-[var(--color_turquoise_gray)] pb-1">
+                <div class="flex flex-col items-center w-70 space-y-3">
+                    <h3 class="w-full text-center text-xl font-bold uppercase mb-4 border-b-3 border-[var(--color_turquoise_gray)] pb-1">
                         Enllaços</h3>
-                    <a href="#" class="text-sm hover:text-[var(--color_turquoise_gray)] transition-colors">La Colla</a>
-                    <a href="#" class="text-sm hover:text-[var(--color_turquoise_gray)] transition-colors">Serveis i
+                    <a href="#" class="text-base font-thin hover:font-black transition">La Colla</a>
+                    <a href="#" class="text-base font-thin hover:font-black transition">Serveis i
                         Contractació</a>
-                    <a href="#" class="text-sm hover:text-[var(--color_turquoise_gray)] transition-colors">Notícies</a>
-                    <a href="#" class="text-sm hover:text-[var(--color_turquoise_gray)] transition-colors">Contacte</a>
+                    <a href="Noticies.html" class="text-base font-thin hover:font-black transition">Notícies</a>
+                    <a href="#" class="text-base font-thin hover:font-black transition">Contacte</a>
                 </div>
 
-                <div class="flex flex-col space-y-3">
-                    <h3 class="text-xl font-bold uppercase mb-4 border-b-2 border-[var(--color_turquoise_gray)] pb-1">
-                        Adreça</h3>
-                    <p class="text-base font-semibold">Local dels Tirallongues de Manresa</p>
-                    <p class="text-sm">xxx calle</p>
-                    <p class="text-sm">xxx codigo postal</p>
+                <div class="flex flex-col items-center w-70 space-y-3">
+                    <h3 class="w-full text-center text-xl font-bold uppercase mb-4 border-b-3 border-[var(--color_turquoise_gray)] pb-1">
+                        Informació</h3>
+                    <!--<p class="text-base font-semibold">Local dels Tirallongues de Manresa</p>-->
+                    <p class="text-base font-thin">📍Carrer Sant Pepitu 57</p>
+                    <p class="text-base font-thin">080209</p>
+                    <p class="text-base font-thin">📞678 29 34 90</p>
+                    <p class="text-base font-thin">📧manrecastells@gmail.com</p>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center pt-4">
-                <h3 class="text-2xl font-extrabold uppercase tracking-widest text-[var(--color_turquoise_gray)] mb-6">
+            <div class="flex flex-col items-center bg-[var(--color_turquoise_gray)] p-6 rounded-lg">
+                <h3 class="text-2xl font-extrabold uppercase tracking-widest text-white mb-6 border-b-3 border-white pb-2 border-t-3 border-white pt-2">
                     Col·laboradors</h3>
 
-                <div class="flex space-x-8 mb-6 flex-wrap justify-center">
+                <div class="flex space-x-8 mb-6 flex-wrap justify-center items-center bg-white/80 p-6 pt-8 rounded-lg">
                     <img src="images/cal_xavi_colaborador.webp" alt="Cal Xavi logo"
                         class="h-12 w-auto object-contain mb-4">
                     <img src="images/dammlogo_colaborador.webp" alt="Damm logo" class="h-12 w-auto object-contain mb-4">

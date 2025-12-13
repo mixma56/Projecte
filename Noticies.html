@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ca">
 
@@ -285,4 +286,152 @@
 
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/gif" href="images/icono.gif">
+    <title>Notícies</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        :root {
+            /*Color Primario*/
+            --color_blue_gray: #5f7e8d;
+            /*Color Secundario*/
+            --color_turquoise_gray: #5f8d85;
+            /*Color Terciario*/
+            --color_dark_blue_gray: #5f678d;
+
+            /*Fuente Primaria*/
+            --font-primary: "Poppins", sans-serif;
+        }
+
+        * {
+            font-family: var(--font-primary);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-[var(--color_blue_gray)]/10 to-white">
+    <header
+            class="flex flex-row bg-[var(--color_blue_gray)]/95 p-4 text-white justify-center items-center font-[var(--font-primary)] font-bold text-lg">
+            <div class="basis-1/4">
+                <a href="WebPrincipal-Tirallongues.html"><img src="images/logo.png" alt="logo_tirallongues" /></a> 
+            </div>
+
+            <div class="basis-2/4 text-center m-auto text-4xl uppercase">
+                <h1>Tirallongues de Manresa</h1>
+            </div>
+
+            <div class="w-50 flex justify-center items-center p-2 rounded-full border border-white/50 bg-white/10 mx-auto
+                hover:bg-white/20 hover:border-white transition-colors duration-200 cursor-pointer shadow-md">
+                <select class="w-full appearance-none focus:outline-none focus:underline focus:ring-0 text-center"
+                    id="opciones-select" name="opciones">
+                    <option value="" hidden selected class="text-xs">Idioma</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90 hover:bg-white hover:text-black transition-colors" value="opc1">Català</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90" value="opc2">Castellà</option>
+                    <option class="text-white bg-[var(--color_blue_gray)]/90" value="opc3">English</option>
+                </select>
+            </div>
+        </header>
+
+        <nav
+            class="flex flex-row p-4 text-white font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-5">
+            <a href="#"
+                class="flex justify-center items-center py-2 bg-[var(--color_turquoise_gray)]/85 border-2 border-black/10 hover:bg-[var(--color_turquoise_gray)] hover:border-white rounded-full">
+                <select
+                    class="w-full text-center appearance-none focus:outline-none focus:underline focus:ring-0 bg-transparent"
+                    id="colla-select" name="colla">
+                    <option value="" hidden selected>LA COLLA</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col1">Qui som?</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col2">Qui fem?</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col3">Integrants de gestió</option>
+                    <option class="text-white bg-[var(--color_turquoise_gray)]/90" value="col4">Música</option>
+                </select>
+            </a>
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
+                <p>Serveis i Contractació</p>
+            </a>
+            <a href="Noticies.html"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
+                <p>Notícies</p>
+            </a>
+            <a href="#"
+                class="px-8 py-2 bg-[var(--color_turquoise_gray)]/85 hover:bg-[var(--color_turquoise_gray)] border-2 border-black/10 hover:border-white rounded-full">
+                <p>Contacte</p>
+            </a>
+        </nav>
+        
+        <!-- Títol -->
+        <section class="flex justify-center text-center pt-8">
+            <div class="w-full max-w-6xl py-4 border-b-3 border-t-3 border-[var(--color_dark_blue_gray)]">
+                <h1 class="text-5xl font-bold text-[var(--color_blue_gray)] text-center uppercase">Notícies</h1>
+            </div>
+        </section>
+
+        <main class="flex justify-center py-12">
+        <div class="w-full max-w-6xl px-4">
+            <!-- Noticia 1 -->
+            <article class="flex flex-row gap-6 mb-8 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex-shrink-0 w-48 h-32">
+                    <img src="images/img_section_principal.jpg" alt="Noticia 1" class="w-full h-full object-cover rounded-lg">
+                </div>
+
+                <div class="flex-grow flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-[var(--color_blue_gray)] mb-2">Título de la Noticia</h2>
+                        <p class="text-gray-700 text-sm line-clamp-2">Breve descripción de la noticia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia modi dolorem veritatis fugit esse delectus atque repellat provident.</p>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 text-right">
+                    <p class="text-xs text-gray-500 font-semibold">15/12/2025</p>
+                </div>
+            </article>
+
+            <!-- Noticia 2 -->
+            <article class="flex flex-row gap-6 mb-8 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex-shrink-0 w-48 h-32">
+                    <img src="images/img_section_principal.jpg" alt="Noticia 2" class="w-full h-full object-cover rounded-lg">
+                </div>
+
+                <div class="flex-grow flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-[var(--color_blue_gray)] mb-2">Otra Noticia Importante</h2>
+                        <p class="text-gray-700 text-sm line-clamp-2">Segunda noticia con imagen, título y descripción breve. Repudiandae, consequatur inventore expedita perferendis quas, obcaecati tenetur sit unde quae officia.</p>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 text-right">
+                    <p class="text-xs text-gray-500 font-semibold">14/12/2025</p>
+                </div>
+            </article>
+
+            <!-- Noticia 3 -->
+            <article class="flex flex-row gap-6 mb-8 p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div class="flex-shrink-0 w-48 h-32">
+                    <img src="images/img_section_principal.jpg" alt="Noticia 3" class="w-full h-full object-cover rounded-lg">
+                </div>
+
+                <div class="flex-grow flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-[var(--color_blue_gray)] mb-2">Tercera Noticia Relevante</h2>
+                        <p class="text-gray-700 text-sm line-clamp-2">Tercera noticia del portal. Fugiat sapiente adipisci labore fuga illo nostrum ducimus impedit similique corporis cupiditate omnis temporibus, dicta alias.</p>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 text-right">
+                    <p class="text-xs text-gray-500 font-semibold">13/12/2025</p>
+                </div>
+            </article>
+        </div>
+    </main>
+    
+</body>
+>>>>>>> 5f042039763f9879ed5c80fdd5b10e8aecaa25be
 </html>

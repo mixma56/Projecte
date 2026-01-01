@@ -25,6 +25,18 @@
         * {
             font-family: var(--font-primary);
         }
+
+        /* Clase para el efecto de fundido */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
     </style>
 </head>
 
@@ -117,11 +129,12 @@
 
                     <div
                         class="w-85 min-w-64 max-w-85 h-auto bg-white rounded-xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:cursor-pointer border border-gray-100">
-                        <h1 class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
+                        <h1 id="actuacio-titol" class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
                             Actuació 1
                         </h1>
 
                         <h2
+                            id="actuacio-data"
                             class="text-center text-xl font-medium text-gray-600 border-b-2 border-[var(--color_blue_gray)]/30 pb-4 mb-4">
                             Diumenge 23 de Gener
                         </h2>
@@ -129,16 +142,19 @@
                         <ul class="space-y-3">
                             <li class="flex flex-col items-start">
                                 <a href="#"
+                                    id="actuacio-ubicacio"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors">
                                     📍 Ubicació
                                 </a>
 
                                 <a href="#"
+                                    id="actuacio-hora"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors mt-2">
                                     ⏰ Hora
                                 </a>
 
                                 <a href="#"
+                                    id="actuacio-colles"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors mt-2">
                                     👥 Colles participants
                                 </a>
@@ -179,21 +195,23 @@
 
                 <div
                     class="min-w-64 max-w-85 h-auto bg-white rounded-xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:cursor-pointer border border-gray-100">
-                    <h1 class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
+                    <h1 id="noticia-titol" class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
                         Gran èxit a la Diada de Sant Marti
                     </h1>
 
                     <h2
+                        id="noticia-data"
                         class="text-center text-xl font-medium text-gray-600 border-b-2 border-[var(--color_blue_gray)]/30 pb-4 mb-4">
                         Publicat el 25 de Gener
                     </h2>
 
-                    <p class="text-gray-700 text-sm italic leading-relaxed mb-4">
+                    <p id="noticia-resum" class="text-gray-700 text-sm italic leading-relaxed mb-4">
                         La colla ha completat la seva millor actuació de la història amb
                         una torre de 8 i un pilar de 6.
                     </p>
 
                     <div
+                        id="noticia-img"
                         class="h-32 bg-gray-200 rounded-lg flex items-center justify-center mb-4 bg-[url('images/general/torre_de_8.jpg')] bg-auto bg-center">
                     </div>
 
@@ -321,6 +339,130 @@
             window.location.href = 'Musica.html';
         }
     });
+
+
+// Funcion para aplicar la animacionn
+function aplicarAnimacion(elementoPadre) {
+    elementoPadre.classList.remove('fade-in');
+    void elementoPadre.offsetWidth; 
+    elementoPadre.classList.add('fade-in');
+}
+
+
+//carrusel actuacions properes
+const actuaciones = [
+    {
+        titulo: "Actuació 1",
+        fecha: "Diumenge 23 de Gener",
+        ubicacion: "📍 Plaza Mayor",
+        hora: "⏰ 12:00h",
+        colla: "👥 Colla X, Colla Y"
+    },
+    {
+        titulo: "Diada de la Llum",
+        fecha: "Dissabte 21 de Febrer",
+        ubicacion: "📍 Seu de Manresa",
+        hora: "⏰ 11:30h",
+        colla: "👥 Colla Z, Colla Y"
+    },
+    {
+        titulo: "Aniversari Colla",
+        fecha: "Diumenge 15 de Març",
+        ubicacion: "📍 Passeig Pere III",
+        hora: "⏰ 18:00h",
+        colla: "👥 Colla Z, Colla X"
+    }
+];
+
+let indiceActual = 0;
+
+const tituloEl = document.getElementById('actuacio-titol');
+const fechaEl = document.getElementById('actuacio-data');
+const ubicacionEl = document.getElementById('actuacio-ubicacio');
+const horaEl = document.getElementById('actuacio-hora');
+const collaEl = document.getElementById('actuacio-colles');
+
+
+
+// Carrusel Actuaciones 
+function actualizarActuacion() {
+    const contenedor = document.querySelector('main .w-85'); // El contenedor de la ficha
+    
+    tituloEl.innerText = actuaciones[indiceActual].titulo;
+    fechaEl.innerText = actuaciones[indiceActual].fecha;
+    ubicacionEl.innerText = actuaciones[indiceActual].ubicacion;
+    horaEl.innerText = actuaciones[indiceActual].hora;
+    collaEl.innerText = actuaciones[indiceActual].colla;
+    
+    aplicarAnimacion(contenedor);
+}
+
+// Botón Izquierda
+document.querySelector('button svg path[d*="M10.5 19.5L3 12"]').parentElement.addEventListener('click', () => {
+    indiceActual = (indiceActual === 0) ? actuaciones.length - 1 : indiceActual - 1;
+    actualizarActuacion();
+});
+
+// Botón Derecha
+document.querySelector('button svg path[d*="M13.5 4.5L21 12"]').parentElement.addEventListener('click', () => {
+    indiceActual = (indiceActual === actuaciones.length - 1) ? 0 : indiceActual + 1;
+    actualizarActuacion();
+});
+
+// Carrusel de Noticies
+const noticias = [
+    {
+        titol: "Gran èxit a la Diada de Sant Marti",
+        data: "Publicat el 25 de Gener",
+        resum: "La colla ha completat la seva millor actuació de la història amb una torre de 8 i un pilar de 6.",
+        img: "images/general/torre_de_8.jpg"
+    },
+    {
+        titol: "Nou assaig especial de canalla",
+        data: "Publicat el 20 de Gener",
+        resum: "Aquest divendres preparem noves estructures amb tota la canalla de la colla. No hi faltis!",
+        img: "images/index/img_section_principal.jpg" 
+    },
+    {
+        titol: "Sopar de germanor 2026",
+        data: "Publicat el 15 de Gener",
+        resum: "Més de 100 castellers ens vam reunir per celebrar l'inici de la nova temporada.",
+        img: "images/quisom/tirallongues2.jpg" 
+    }
+];
+
+let indiceNoticia = 0;
+
+const notiTitolEl = document.getElementById('noticia-titol');
+const notiDataEl = document.getElementById('noticia-data');
+const notiResumEl = document.getElementById('noticia-resum');
+const notiImgEl = document.getElementById('noticia-img');
+
+// Carrusel Noticias 
+function actualizarNoticia() {
+    const contenedorNoticia = document.querySelector('aside .max-w-85'); // El contenedor de la noticia
+    
+    notiTitolEl.innerText = noticias[indiceNoticia].titol;
+    notiDataEl.innerText = noticias[indiceNoticia].data;
+    notiResumEl.innerText = noticias[indiceNoticia].resum;
+    notiImgEl.style.backgroundImage = `url('${noticias[indiceNoticia].img}')`;
+    
+    aplicarAnimacion(contenedorNoticia);
+}
+
+
+const btnNoticiaPrev = document.querySelector('aside button svg path[d*="M10.5 19.5L3 12"]').parentElement;
+const btnNoticiaNext = document.querySelector('aside button svg path[d*="M13.5 4.5L21 12"]').parentElement;
+
+btnNoticiaPrev.addEventListener('click', () => {
+    indiceNoticia = (indiceNoticia === 0) ? noticias.length - 1 : indiceNoticia - 1;
+    actualizarNoticia();
+});
+
+btnNoticiaNext.addEventListener('click', () => {
+    indiceNoticia = (indiceNoticia === noticias.length - 1) ? 0 : indiceNoticia + 1;
+    actualizarNoticia();
+});
 
 </script>
 </html>

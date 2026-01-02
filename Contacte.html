@@ -11,41 +11,36 @@
 
     <style>
         :root {
-            /*Color Primario*/
             --color_blue_gray: #5f7e8d;
-            /*Color Secundario*/
             --color_turquoise_gray: #5f8d85;
-            /*Color Terciario*/
             --color_dark_blue_gray: #5f678d;
-
-            /*Fuente Primaria*/
             --font-primary: "Poppins", sans-serif;
         }
 
-        * {
-            font-family: var(--font-primary);
+        * { font-family: var(--font-primary); }
+
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
-<body class="relative overflow-x-hidden overflow-y-auto min-h-screen">
-    <section class="relative pt-24 bg-white">
-        <header
-            class="flex flex-row bg-[var(--color_blue_gray)]/95 p-4 text-white justify-center items-center font-[var(--font-primary)] font-bold text-lg fixed w-full top-0 left-0 z-50 shadow-lg">
+<body class="relative overflow-x-hidden overflow-y-auto min-h-screen bg-white">
+    <section class="relative pt-24">
+        <header class="flex flex-row bg-[var(--color_blue_gray)]/95 p-4 text-white justify-center items-center font-bold text-lg fixed w-full top-0 left-0 z-50 shadow-lg">
             <div class="basis-1/4">
-                <a href="index.html"><img src="images/general/logo.png" alt="logo_tirallongues"
-                        class="h-16 w-auto mx-auto" /></a>
+                <a href="index.html"><img src="images/general/logo.png" alt="logo_tirallongues" class="h-16 w-auto mx-auto" /></a>
             </div>
-
             <div class="basis-2/4 text-center m-auto text-4xl uppercase">
                 <h1>Tirallongues de Manresa</h1>
             </div>
-
-            <div
-                class="w-50 flex justify-center items-center p-2 rounded-full border border-white/50 bg-white/10 mx-auto hover:bg-white/20 hover:border-white transition-colors duration-200 cursor-pointer shadow-md">
-                <select
-                    class="w-full appearance-none focus:outline-none focus:underline focus:ring-0 text-center bg-transparent text-white cursor-pointer"
-                    id="opciones-select" name="opciones">
+            <div class="w-50 flex justify-center items-center p-2 rounded-full border border-white/50 bg-white/10 mx-auto hover:bg-white/20 transition-colors cursor-pointer">
+                <select class="w-full appearance-none bg-transparent text-white cursor-pointer text-center outline-none" id="opciones-select">
                     <option value="" hidden selected class="text-black">Idioma</option>
                     <option class="text-black" value="opc1">Català</option>
                     <option class="text-black" value="opc2">Castellà</option>
@@ -54,143 +49,124 @@
             </div>
         </header>
 
-        <nav
-            class="flex flex-row p-4 bg-white/90 text-gray-800 font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-3 shadow-lg">
-            <a href="#"
-                class="flex justify-center items-center py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all flex-shrink-0">
-                <select
-                    class="w-full text-center appearance-none focus:outline-none focus:underline focus:ring-0 bg-transparent px-4 cursor-pointer text-gray-800"
-                    id="colla-select" name="colla">
-                    <option value="" hidden selected class="text-gray-800">LA COLLA</option>
-                    <option class="text-black" value="col1">Qui som?</option>
-                    <option class="text-black" value="col2">Integrants de gestió</option>
-                    <option class="text-black" value="col3">Música</option>
+        <nav class="flex flex-row p-4 bg-white/90 text-gray-800 justify-center items-center font-bold text-lg uppercase space-x-3 shadow-lg">
+            <div class="flex justify-center items-center py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all">
+                <select class="w-full text-center appearance-none bg-transparent px-4 cursor-pointer outline-none" id="colla-select">
+                    <option value="" hidden selected>LA COLLA</option>
+                    <option value="col1">Qui som?</option>
+                    <option value="col2">Integrants de gestió</option>
+                    <option value="col3">Música</option>
                 </select>
-            </a>
-            <a href="Serveis.html"
-                class="px-8 py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all flex-shrink-0">
-                <p>Serveis i Contractació</p>
-            </a>
-            <a href="Noticies.html"
-                class="px-8 py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all flex-shrink-0">
-                <p>Notícies</p>
-            </a>
-            <a href="Contacte.html"
-                class="px-8 py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all flex-shrink-0">
-                <p>Contacte</p>
-            </a>
+            </div>
+            <a href="Serveis.html" class="px-8 py-2 border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all">Serveis</a>
+            <a href="Noticies.html" class="px-8 py-2 border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all">Notícies</a>
+            <a href="Contacte.html" class="px-8 py-2 bg-[var(--color_turquoise_gray)] text-white rounded-full transition-all">Contacte</a>
         </nav>
     </section>
 
-
     <div class="flex items-center justify-center py-5 bg-gray-50 border-b-4 border-[var(--color_turquoise_gray)]/50">
-        <h1 class="text-5xl text-[var(--color_dark_blue_gray)] font-extrabold uppercase tracking-widest">Contacte
-        </h1>
+        <h1 class="text-5xl text-[var(--color_dark_blue_gray)] font-extrabold uppercase tracking-widest text-center">Contacte</h1>
     </div>
 
-    <footer>
-        <div class="bg-[var(--color_dark_blue_gray)] text-white p-12 shadow-inner">
-            <div
-                class="flex flex-row justify-center w-full max-w-6xl mx-auto border-b border-white/20 mb-8 pb-8 space-x-60">
-                <div class="flex flex-col items-center w-70 space-y-3">
-                    <h3
-                        class="w-full text-center text-xl font-bold uppercase mb-4 border-b-3 border-[var(--color_turquoise_gray)] pb-1">
-                        Enllaços
-                    </h3>
-                    <a href="#" class="text-base font-thin hover:font-black transition">La Colla</a>
-                    <a href="#" class="text-base font-thin hover:font-black transition">Serveis i Contractació</a>
-                    <a href="Noticies.html" class="text-base font-thin hover:font-black transition">Notícies</a>
-                    <a href="#" class="text-base font-thin hover:font-black transition">Contacte</a>
-                </div>
-
-                <div class="flex flex-col items-center w-70 space-y-3">
-                    <h3
-                        class="w-full text-center text-xl font-bold uppercase mb-4 border-b-3 border-[var(--color_turquoise_gray)] pb-1">
-                        Informació
-                    </h3>
-                    <p class="text-base font-thin">📍Carrer Sant Pepitu 57</p>
-                    <p class="text-base font-thin">080209</p>
-                    <p class="text-base font-thin">📞678 29 34 90</p>
-                    <p class="text-base font-thin">📧manrecastells@gmail.com</p>
+    <main class="max-w-4xl mx-auto py-16 px-4">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
+            <div class="md:w-1/3 bg-[var(--color_dark_blue_gray)] p-8 text-white flex flex-col justify-center">
+                <h2 class="text-2xl font-bold mb-6">Parlem-ne!</h2>
+                <p class="mb-8 text-blue-100 italic">Tens algun dubte o vols que actuem a la teva festa? Omple el formulari.</p>
+                <div class="space-y-4 text-sm">
+                    <p>📍 Carrer Sant Pepitu 57</p>
+                    <p>📞 678 29 34 90</p>
+                    <p>📧 manrecastells@gmail.com</p>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center  p-6 rounded-lg">
-                <h3
-                    class="text-2xl font-extrabold uppercase tracking-widest text-white mb-6 border-b-3 border-white pb-2 border-t-3 border-white pt-2">
-                    Col·laboradors
-                </h3>
-
-                <div class="flex space-x-8 mb-6 flex-wrap justify-center items-center bg-white/80 p-6 pt-8 rounded-lg">
-                    <img src="images/general/cal_xavi_colaborador.webp" alt="Cal Xavi logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/dammlogo_colaborador.webp" alt="Damm logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/eixclima-logo_colaborador.webp" alt="Eix Clima logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/lesnostrestradicions_colaborador.webp" alt="Les Nostres Tradicions logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/logo-musilloc-t_colaborador.webp" alt="Musilloc logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/logo-smilepiercings_colaboradopr.webp" alt="Smile Piercings logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/logo_vinspravi-1_colaborador.webp" alt="Vins Pravi logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/LogoARABO-NEGRO-SIN-FONDO_colaborador.webp" alt="ARABO logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/mac-mobles_colaborador.webp" alt="Mac Mobles logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/printdossier_colaborador.webp" alt="Print Dossier logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/tonis-logo_colaborador.webp" alt="Tonis logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/vitam-logo_colaborador.webp" alt="Vitam logo"
-                        class="h-12 w-auto object-contain mb-4" />
-                    <img src="images/general/xarrup-logo-t_colaborador.webp" alt="Xarrup logo"
-                        class="h-12 w-auto object-contain mb-4" />
+            <div class="md:w-2/3 p-8 md:p-12 relative">
+                <div id="success-message" class="hidden absolute inset-0 bg-white/95 z-10 flex flex-col items-center justify-center text-center p-6 fade-in-up">
+                    <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Enviat amb èxit!</h2>
+                    <p class="text-gray-600">Ens posarem en contacte amb tu ben aviat.</p>
+                    <button onclick="resetForm()" class="mt-6 text-[var(--color_turquoise_gray)] font-bold hover:underline">Enviar un altre missatge</button>
                 </div>
 
-                <p class="text-xs text-white/70 mt-4">
-                    &copy;
-                    <span x-text="new Date().getFullYear()">2025</span> Tirallongues de
-                    Manresa. Tots els drets reservats.
-                </p>
+                <form id="contact-form" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Nom Complet</label>
+                        <input type="text" id="name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color_turquoise_gray)] focus:border-transparent outline-none transition-all" placeholder="Escriu el teu nom">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Correu Electrònic</label>
+                        <input type="email" id="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color_turquoise_gray)] focus:border-transparent outline-none transition-all" placeholder="exemple@correu.com">
+                        <span id="email-error" class="text-red-500 text-xs hidden mt-1">Si us plau, introdueix un email vàlid.</span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Missatge</label>
+                        <textarea id="message" rows="4" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[var(--color_turquoise_gray)] focus:border-transparent outline-none transition-all" placeholder="Com et podem ajudar?"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[var(--color_turquoise_gray)] text-white font-bold py-3 rounded-lg hover:bg-[var(--color_dark_blue_gray)] transform hover:-translate-y-1 transition-all shadow-lg uppercase tracking-wider">
+                        Enviar Missatge
+                    </button>
+                </form>
             </div>
         </div>
-    </footer>
-</body>
+    </main>
 
-<script>
-    document.querySelector("#opciones-select").addEventListener(
-        "change", (event) => {
-            let idioma = event.target.value;
-            if (idioma === "opc1") {
-                alert("Has seleccionat Català");
-            } else if (idioma === "opc2") {
-                alert("Has seleccionat Castellà");
-            } else if (idioma === "opc3") {
-                alert("You have selected English");
+    <script>
+        /**
+         * ESQUEMA DEL JAVASCRIPT:
+         * 1. Captura de elementos del DOM (Formulario, inputs, mensajes).
+         * 2. Función de validación de Email mediante Regex.
+         * 3. Listener del evento 'submit':
+         * - Prevenir el envío por defecto.
+         * - Validar campos.
+         * - Si es válido, ocultar formulario y mostrar animación de éxito.
+         * 4. Función de Reset para volver al estado inicial.
+         */
+
+        const contactForm = document.getElementById('contact-form');
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const successMessage = document.getElementById('success-message');
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email.toLowerCase());
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Validar Email
+            if (!validateEmail(emailInput.value)) {
+                emailError.classList.remove('hidden');
+                emailInput.classList.add('border-red-500');
+                return;
             }
+
+            // Si es válido:
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('border-red-500');
+
+            // Simular envío y mostrar mensaje animado
+            successMessage.classList.remove('hidden');
+        });
+
+        function resetForm() {
+            contactForm.reset();
+            successMessage.classList.add('hidden');
         }
-    )
 
-    // Reset select 
-    window.addEventListener('pageshow', function () {
-        document.getElementById('colla-select').selectedIndex = 0;
-    });
-
-    // Navigation based on select option
-    document.getElementById('colla-select').addEventListener('change', function () {
-        const selectedValue = this.value;
-        if (selectedValue === 'col1') {
-            window.location.href = 'QuiSom.html';
-        } else if (selectedValue === 'col2') {
-            window.location.href = 'Integrants.html';
-        } else if (selectedValue === 'col3') {
-            window.location.href = 'Musica.html';
-        }
-    });
-
-</script>
-
+        // Lógica de navegación (común a todas las páginas)
+        document.getElementById('colla-select').addEventListener('change', function() {
+            const routes = { col1: 'QuiSom.html', col2: 'Integrants.html', col3: 'Musica.html' };
+            if (routes[this.value]) window.location.href = routes[this.value];
+        });
+    </script>
+</body>
 </html>

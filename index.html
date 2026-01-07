@@ -10,32 +10,112 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <style>
+        
         :root {
-            /*Color Primario*/
+            
             --color_blue_gray: #5f7e8d;
-            /*Color Secundario*/
             --color_turquoise_gray: #5f8d85;
-            /*Color Terciario*/
             --color_dark_blue_gray: #5f678d;
 
-            /*Fuente Primaria*/
+            
+            --bg_body: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --bg_card: #f9fafb;
+            --text_body: #1f2937;
+
+           
+            --nav-text: #1f2937;
+            --nav-hover: #5f8d85;
+
+            
             --font-primary: "Poppins", sans-serif;
         }
 
+        
+        body.dark {
+            --bg_body: #121212;
+           
+            --bg-secondary: #1e1e1e;
+            
+            --bg_card: #2a2a2a;
+            
+
+            --text_body: #f3f4f6;
+            --nav-text: #f3f4f6;
+            --nav-hover: #82ada5;
+
+            
+            --color_blue_gray: #3d525c;
+        }
+
+        
         * {
             font-family: var(--font-primary);
         }
 
-        /* Clase para el efecto de fundido */
+        body {
+            background-color: var(--bg_body);
+            color: var(--text_body);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+      
+
+        
+        body.dark .bg-white,
+        body.dark .bg-gray-50 {
+            background-color: var(--bg_body) !important;
+            color: var(--text_body);
         }
 
+        body.dark .bg-gray-100 {
+            background-color: var(--bg-secondary) !important;
+            color: var(--text_body);
+        }
+
+       
+        body.dark nav {
+            background-color: rgba(30, 30, 30, 0.9) !important;
+        }
+
+        nav a,
+        nav select {
+            color: var(--nav-text) !important;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        
+        nav a:hover {
+            color: #ffffff !important;
+        }
+
+        .section-secondary {
+            background-color: var(--bg-secondary);
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark .bg-white {
+            background-color: var(--bg_card) !important;
+            color: var(--text_body);
+            border-color: #333; 
+        }
 
     </style>
 </head>
@@ -64,10 +144,14 @@
                     <option class="text-black" value="opc3">English</option>
                 </select>
             </div>
+            <button id="dark-mode-toggle"
+                class="p-2 ml-4 rounded-full border border-white/50 bg-white/10 hover:bg-white/20 transition-all cursor-pointer shadow-md text-white">
+                <span id="theme-icon">🌙</span>
+            </button>
         </header>
 
         <nav
-            class="flex flex-row p-4 bg-white/90 text-gray-800 font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-3 shadow-lg">
+            class="flex flex-row p-4 bg-white/90 font-[var(--font-primary)] justify-center items-center font-bold text-lg uppercase space-x-3 shadow-lg">
             <a href="#"
                 class="flex justify-center items-center py-2 bg-transparent border-2 border-[var(--color_turquoise_gray)]/50 hover:bg-[var(--color_turquoise_gray)] hover:text-white rounded-full transition-all flex-shrink-0">
                 <select
@@ -93,19 +177,27 @@
             </a>
         </nav>
 
-        <div class="w-196 h-50 bg-transparent mx-auto mt-10 p-20 flex flex-row justify-center items-center space-x-10">
-            <div
-                class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl flex justify-center items-center hover:cursor-pointer hover:bg-gray-800 transition-all border border-white/20">
-                <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)] font-extrabold">
-                    Vine a l'assaig
-                </h1>
+        <div class="w-200 h-75 bg-transparent mx-auto mt-10 p-20 flex flex-col justify-center items-center space-y-6">
+            <div class="w-180 h-24 bg-transparent flex flex-row justify-center items-center space-x-10">
+                <div
+                    class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl flex justify-center items-center hover:cursor-pointer hover:bg-gray-800 transition-all border border-white/20">
+                    <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)] font-extrabold">
+                        Vine a l'assaig
+                    </h1>
+                </div>
+
+                <div
+                    class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl flex justify-center items-center hover:cursor-pointer hover:bg-gray-800 transition-all border border-white/20 font-extrabold">
+                    <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)]">
+                        Fes-te soci!
+                    </h1>
+                </div>
             </div>
 
-            <div
-                class="w-58 h-24 flex-grow bg-gray-800/90 rounded-xl flex justify-center items-center hover:cursor-pointer hover:bg-gray-800 transition-all border border-white/20 font-extrabold">
-                <h1 class="text-lg text-white text-center uppercase font-[var(--font-primary)]">
-                    Fes-te soci!
-                </h1>
+            <div id="section-counter" class="w-75 y-50 flex flex-col items-center justify-center p-6 bg-[var(--color_blue_gray)]/95 text-white rounded-xl">
+                <h3 class="text-1xl uppercase font-semibold">Castells realitzats l'any</h3>
+                <h3 class="text-2xl uppercase font-bold mb-2">2025:</h3>
+                <div id="counter" class="text-7xl font-extrabold">0</div>
             </div>
         </div>
     </section>
@@ -117,6 +209,7 @@
                     Properes actuacions
                 </h2>
 
+                    
                 <div class="flex items-center space-x-4">
                     <button
                         class="w-12 h-12 rounded-full bg-gray-300 text-gray-700 hover:bg-[var(--color_turquoise_gray)] hover:text-white transition duration-300 flex items-center justify-center shadow-md">
@@ -129,32 +222,29 @@
 
                     <div
                         class="w-85 min-w-64 max-w-85 h-auto bg-white rounded-xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:cursor-pointer border border-gray-100">
-                        <h1 id="actuacio-titol" class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
+                        <h1 id="actuacio-titol"
+                            class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
                             Actuació 1
                         </h1>
 
-                        <h2
-                            id="actuacio-data"
+                        <h2 id="actuacio-data"
                             class="text-center text-xl font-medium text-gray-600 border-b-2 border-[var(--color_blue_gray)]/30 pb-4 mb-4">
                             Diumenge 23 de Gener
                         </h2>
 
                         <ul class="space-y-3">
                             <li class="flex flex-col items-start">
-                                <a href="#"
-                                    id="actuacio-ubicacio"
+                                <a href="#" id="actuacio-ubicacio"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors">
                                     📍 Ubicació
                                 </a>
 
-                                <a href="#"
-                                    id="actuacio-hora"
+                                <a href="#" id="actuacio-hora"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors mt-2">
                                     ⏰ Hora
                                 </a>
 
-                                <a href="#"
-                                    id="actuacio-colles"
+                                <a href="#" id="actuacio-colles"
                                     class="text-lg font-semibold text-[var(--color_turquoise_gray)] hover:text-black transition-colors mt-2">
                                     👥 Colles participants
                                 </a>
@@ -182,7 +272,7 @@
         </main>
     </section>
 
-    <aside class="flex justify-center bg-gray-100 py-16">
+    <aside class="flex justify-center  py-16 section-secondary">
         <div class="flex flex-row w-full max-w-6xl items-center justify-between p-3 mx-auto">
             <div class="flex items-center space-x-4">
                 <button
@@ -195,12 +285,12 @@
 
                 <div
                     class="min-w-64 max-w-85 h-auto bg-white rounded-xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] hover:cursor-pointer border border-gray-100">
-                    <h1 id="noticia-titol" class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
+                    <h1 id="noticia-titol"
+                        class="text-center text-3xl font-extrabold text-[var(--color_dark_blue_gray)] mb-2">
                         Gran èxit a la Diada de Sant Marti
                     </h1>
 
-                    <h2
-                        id="noticia-data"
+                    <h2 id="noticia-data"
                         class="text-center text-xl font-medium text-gray-600 border-b-2 border-[var(--color_blue_gray)]/30 pb-4 mb-4">
                         Publicat el 25 de Gener
                     </h2>
@@ -210,8 +300,7 @@
                         una torre de 8 i un pilar de 6.
                     </p>
 
-                    <div
-                        id="noticia-img"
+                    <div id="noticia-img"
                         class="h-32 bg-gray-200 rounded-lg flex items-center justify-center mb-4 bg-[url('images/general/torre_de_8.jpg')] bg-auto bg-center">
                     </div>
 
@@ -324,12 +413,12 @@
     )
 
     // Reset select 
-    window.addEventListener('pageshow', function() {
+    window.addEventListener('pageshow', function () {
         document.getElementById('colla-select').selectedIndex = 0;
     });
 
     // Navigation based on select option
-    document.getElementById('colla-select').addEventListener('change', function() {
+    document.getElementById('colla-select').addEventListener('change', function () {
         const selectedValue = this.value;
         if (selectedValue === 'col1') {
             window.location.href = 'QuiSom.html';
@@ -341,128 +430,179 @@
     });
 
 
-// Funcion para aplicar la animacionn
-function aplicarAnimacion(elementoPadre) {
-    elementoPadre.classList.remove('fade-in');
-    void elementoPadre.offsetWidth; 
-    elementoPadre.classList.add('fade-in');
-}
-
-
-//carrusel actuacions properes
-const actuaciones = [
-    {
-        titulo: "Actuació 1",
-        fecha: "Diumenge 23 de Gener",
-        ubicacion: "📍 Plaza Mayor",
-        hora: "⏰ 12:00h",
-        colla: "👥 Colla X, Colla Y"
-    },
-    {
-        titulo: "Diada de la Llum",
-        fecha: "Dissabte 21 de Febrer",
-        ubicacion: "📍 Seu de Manresa",
-        hora: "⏰ 11:30h",
-        colla: "👥 Colla Z, Colla Y"
-    },
-    {
-        titulo: "Aniversari Colla",
-        fecha: "Diumenge 15 de Març",
-        ubicacion: "📍 Passeig Pere III",
-        hora: "⏰ 18:00h",
-        colla: "👥 Colla Z, Colla X"
+    // Funcion para aplicar la animacionn
+    function aplicarAnimacion(elementoPadre) {
+        elementoPadre.classList.remove('fade-in');
+        void elementoPadre.offsetWidth;
+        elementoPadre.classList.add('fade-in');
     }
-];
-
-let indiceActual = 0;
-
-const tituloEl = document.getElementById('actuacio-titol');
-const fechaEl = document.getElementById('actuacio-data');
-const ubicacionEl = document.getElementById('actuacio-ubicacio');
-const horaEl = document.getElementById('actuacio-hora');
-const collaEl = document.getElementById('actuacio-colles');
 
 
+    //carrusel actuacions properes
+    const actuaciones = [
+        {
+            titulo: "Actuació 1",
+            fecha: "Diumenge 23 de Gener",
+            ubicacion: "📍 Plaza Mayor",
+            hora: "⏰ 12:00h",
+            colla: "👥 Colla X, Colla Y"
+        },
+        {
+            titulo: "Diada de la Llum",
+            fecha: "Dissabte 21 de Febrer",
+            ubicacion: "📍 Seu de Manresa",
+            hora: "⏰ 11:30h",
+            colla: "👥 Colla Z, Colla Y"
+        },
+        {
+            titulo: "Aniversari Colla",
+            fecha: "Diumenge 15 de Març",
+            ubicacion: "📍 Passeig Pere III",
+            hora: "⏰ 18:00h",
+            colla: "👥 Colla Z, Colla X"
+        }
+    ];
 
-// Carrusel Actuaciones 
-function actualizarActuacion() {
-    const contenedor = document.querySelector('main .w-85'); // El contenedor de la ficha
-    
-    tituloEl.innerText = actuaciones[indiceActual].titulo;
-    fechaEl.innerText = actuaciones[indiceActual].fecha;
-    ubicacionEl.innerText = actuaciones[indiceActual].ubicacion;
-    horaEl.innerText = actuaciones[indiceActual].hora;
-    collaEl.innerText = actuaciones[indiceActual].colla;
-    
-    aplicarAnimacion(contenedor);
-}
+    let indiceActual = 0;
 
-// Botón Izquierda
-document.querySelector('button svg path[d*="M10.5 19.5L3 12"]').parentElement.addEventListener('click', () => {
-    indiceActual = (indiceActual === 0) ? actuaciones.length - 1 : indiceActual - 1;
-    actualizarActuacion();
-});
+    const tituloEl = document.getElementById('actuacio-titol');
+    const fechaEl = document.getElementById('actuacio-data');
+    const ubicacionEl = document.getElementById('actuacio-ubicacio');
+    const horaEl = document.getElementById('actuacio-hora');
+    const collaEl = document.getElementById('actuacio-colles');
 
-// Botón Derecha
-document.querySelector('button svg path[d*="M13.5 4.5L21 12"]').parentElement.addEventListener('click', () => {
-    indiceActual = (indiceActual === actuaciones.length - 1) ? 0 : indiceActual + 1;
-    actualizarActuacion();
-});
 
-// Carrusel de Noticies
-const noticias = [
-    {
-        titol: "Gran èxit a la Diada de Sant Marti",
-        data: "Publicat el 25 de Gener",
-        resum: "La colla ha completat la seva millor actuació de la història amb una torre de 8 i un pilar de 6.",
-        img: "images/general/torre_de_8.jpg"
-    },
-    {
-        titol: "Nou assaig especial de canalla",
-        data: "Publicat el 20 de Gener",
-        resum: "Aquest divendres preparem noves estructures amb tota la canalla de la colla. No hi faltis!",
-        img: "images/index/img_section_principal.jpg" 
-    },
-    {
-        titol: "Sopar de germanor 2026",
-        data: "Publicat el 15 de Gener",
-        resum: "Més de 100 castellers ens vam reunir per celebrar l'inici de la nova temporada.",
-        img: "images/quisom/tirallongues2.jpg" 
+
+    // Carrusel Actuaciones 
+    function actualizarActuacion() {
+        const contenedor = document.querySelector('main .w-85'); // El contenedor de la ficha
+
+        tituloEl.innerText = actuaciones[indiceActual].titulo;
+        fechaEl.innerText = actuaciones[indiceActual].fecha;
+        ubicacionEl.innerText = actuaciones[indiceActual].ubicacion;
+        horaEl.innerText = actuaciones[indiceActual].hora;
+        collaEl.innerText = actuaciones[indiceActual].colla;
+
+        aplicarAnimacion(contenedor);
     }
-];
 
-let indiceNoticia = 0;
+    // Botón Izquierda
+    document.querySelector('button svg path[d*="M10.5 19.5L3 12"]').parentElement.addEventListener('click', () => {
+        indiceActual = (indiceActual === 0) ? actuaciones.length - 1 : indiceActual - 1;
+        actualizarActuacion();
+    });
 
-const notiTitolEl = document.getElementById('noticia-titol');
-const notiDataEl = document.getElementById('noticia-data');
-const notiResumEl = document.getElementById('noticia-resum');
-const notiImgEl = document.getElementById('noticia-img');
+    // Botón Derecha
+    document.querySelector('button svg path[d*="M13.5 4.5L21 12"]').parentElement.addEventListener('click', () => {
+        indiceActual = (indiceActual === actuaciones.length - 1) ? 0 : indiceActual + 1;
+        actualizarActuacion();
+    });
 
-// Carrusel Noticias 
-function actualizarNoticia() {
-    const contenedorNoticia = document.querySelector('aside .max-w-85'); // El contenedor de la noticia
+    // Carrusel de Noticies
+    const noticias = [
+        {
+            titol: "Gran èxit a la Diada de Sant Marti",
+            data: "Publicat el 25 de Gener",
+            resum: "La colla ha completat la seva millor actuació de la història amb una torre de 8 i un pilar de 6.",
+            img: "images/general/torre_de_8.jpg"
+        },
+        {
+            titol: "Nou assaig especial de canalla",
+            data: "Publicat el 20 de Gener",
+            resum: "Aquest divendres preparem noves estructures amb tota la canalla de la colla. No hi faltis!",
+            img: "images/index/img_section_principal.jpg"
+        },
+        {
+            titol: "Sopar de germanor 2026",
+            data: "Publicat el 15 de Gener",
+            resum: "Més de 100 castellers ens vam reunir per celebrar l'inici de la nova temporada.",
+            img: "images/quisom/tirallongues2.jpg"
+        }
+    ];
+
+    let indiceNoticia = 0;
+
+    const notiTitolEl = document.getElementById('noticia-titol');
+    const notiDataEl = document.getElementById('noticia-data');
+    const notiResumEl = document.getElementById('noticia-resum');
+    const notiImgEl = document.getElementById('noticia-img');
+
+    // Carrusel Noticias 
+    function actualizarNoticia() {
+        const contenedorNoticia = document.querySelector('aside .max-w-85'); // El contenedor de la noticia
+
+        notiTitolEl.innerText = noticias[indiceNoticia].titol;
+        notiDataEl.innerText = noticias[indiceNoticia].data;
+        notiResumEl.innerText = noticias[indiceNoticia].resum;
+        notiImgEl.style.backgroundImage = `url('${noticias[indiceNoticia].img}')`;
+
+        aplicarAnimacion(contenedorNoticia);
+    }
+
+
+    const btnNoticiaPrev = document.querySelector('aside button svg path[d*="M10.5 19.5L3 12"]').parentElement;
+    const btnNoticiaNext = document.querySelector('aside button svg path[d*="M13.5 4.5L21 12"]').parentElement;
+
+    btnNoticiaPrev.addEventListener('click', () => {
+        indiceNoticia = (indiceNoticia === 0) ? noticias.length - 1 : indiceNoticia - 1;
+        actualizarNoticia();
+    });
+
+    btnNoticiaNext.addEventListener('click', () => {
+        indiceNoticia = (indiceNoticia === noticias.length - 1) ? 0 : indiceNoticia + 1;
+        actualizarNoticia();
+    });
+
+
+    //Dark mode
+    const btnToggle = document.getElementById('dark-mode-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    // 1. Comprobar si ya había una preferencia guardada
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark');
+        themeIcon.innerText = '☀️';
+    }
+
+    // 2. Escuchar el click
+    btnToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+
+        // Cambiar icono y guardar preferencia
+        if (body.classList.contains('dark')) {
+            themeIcon.innerText = '☀️';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeIcon.innerText = '🌙';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // Contador animado
+    const counter = document.getElementById('counter');
+    const objec =67; // Numero final
+    const durat = 2000; // Duración de la animación en milisegundos
+    const startTime = performance.now();
+
+
+    function actualizarContador(timeNow) {
+
+        const transcurrido = timeNow - startTime;//Tiempo transcurrido
+
+        const progreso = Math.min(transcurrido / durat, 1);//Progreso entre 0 y 1
+
     
-    notiTitolEl.innerText = noticias[indiceNoticia].titol;
-    notiDataEl.innerText = noticias[indiceNoticia].data;
-    notiResumEl.innerText = noticias[indiceNoticia].resum;
-    notiImgEl.style.backgroundImage = `url('${noticias[indiceNoticia].img}')`;
-    
-    aplicarAnimacion(contenedorNoticia);
-}
+        const suavizado = progreso * (2 - progreso); //Suavizado
+        
+        counter.innerText = Math.floor(suavizado * objec);
 
-
-const btnNoticiaPrev = document.querySelector('aside button svg path[d*="M10.5 19.5L3 12"]').parentElement;
-const btnNoticiaNext = document.querySelector('aside button svg path[d*="M13.5 4.5L21 12"]').parentElement;
-
-btnNoticiaPrev.addEventListener('click', () => {
-    indiceNoticia = (indiceNoticia === 0) ? noticias.length - 1 : indiceNoticia - 1;
-    actualizarNoticia();
-});
-
-btnNoticiaNext.addEventListener('click', () => {
-    indiceNoticia = (indiceNoticia === noticias.length - 1) ? 0 : indiceNoticia + 1;
-    actualizarNoticia();
-});
+        if (progreso < 1) {
+            requestAnimationFrame(actualizarContador);
+        }
+    }
+    requestAnimationFrame(actualizarContador);
 
 </script>
+
 </html>

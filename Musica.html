@@ -145,6 +145,30 @@
                                 les nostres actuacions.
                             </p>
                         </div>
+
+                        <div id="conten-audio" class="bg-gray-100 pl-6 pr-6 p-4">
+
+                            <h2 class="text-1xl font-bold text-[var(--color_dark_blue_gray)] mb-2 underline">Gralla Audio:</h2>
+                            
+                            <audio id="AudioGRA">
+                                <source src="audios/Gralla-PolcaD'Orus.mp3" type="audio/mpeg">
+                            </audio>
+                            
+                            <div id="controls" class="flex items-center justify-center bg-[var(--color_blue_gray)]/75 rounded-lg p-4">
+                                <button id="btnPause" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-[var(--color_dark_blue_gray)] active:bg-black transition-transform text-xl mr-4">
+                                    <span id="icono">▶</span>
+                                </button>
+
+                                <button id="btnReset" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:bg-black transition-transform text-2xl mr-4">
+                                    <span>⏮</span>
+                                </button>
+
+                                <button id="btnVolume" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:bg-black transition-transform text-xl">
+                                    <span id="icono">🔊</span>
+                                </button> 
+                                <input id="volumen" type="range" min="0" max="1" step="0.1" value="0.5" class="w-0 transition-all duration-300 origin-left opacity-0 cursor-pointer hover:opacity-100 hover:w-24">
+                            </div>
+                        </div>
                     </div>
 
                     <div
@@ -158,6 +182,30 @@
                                 Marquen el ritme, el temps i l'emoció de cada carregada i descarregada. Sense ells, no
                                 hi ha acció!
                             </p>
+                        </div>
+
+                        <div id="conten-audio2" class="bg-gray-100 pl-6 pr-6 p-4">
+
+                            <h2 class="text-1xl font-bold text-[var(--color_dark_blue_gray)] mb-2 underline">Timbal Audio:</h2>
+                            
+                            <audio id="AudioTIM">
+                                <source src="audios/Timbalers.mp3" type="audio/mpeg">
+                            </audio>
+
+                            <div id="controls2" class="flex items-center justify-center bg-[var(--color_blue_gray)]/75 rounded-lg p-4">
+                                <button id="btnPause2" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:bg-black transition-transform text-xl mr-4">
+                                    <span id="icono2">▶</span>
+                                </button>
+
+                                <button id="btnReset2" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:bg-black transition-transform text-2xl mr-4">
+                                    <span>⏮</span>
+                                </button>
+
+                                <button id="btnVolume2" class="w-10 h-10 bg-[var(--color_dark_blue_gray)] text-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 active:bg-black transition-transform text-xl">
+                                    <span id="icono2">🔊</span>
+                                </button>
+                                <input id="volumen2" type="range" min="0" max="1" step="0.1" value="0.5" class="w-0 transition-all duration-300 origin-left opacity-0 cursor-pointer hover:opacity-100 hover:w-24">
+                            </div>
                         </div>
                     </div>
 
@@ -304,6 +352,115 @@
         } else if (selectedValue === 'col3') {
             window.location.href = 'Musica.html';
         }
+    });
+
+
+    //References Audio Controls Gralla ----------------------------------------------------------------------------------
+    const AudioGRA = document.getElementById('AudioGRA');
+    const btnPause = document.getElementById('btnPause');
+    const icono = document.getElementById('icono');
+    const btnReset = document.getElementById('btnReset');
+    const btnVolume = document.getElementById('btnVolume');
+    const controlVolumen = document.getElementById('volumen');
+
+    //Play/Pause---------------------------------------------------
+    btnPause.addEventListener('click', () => {
+        if (AudioGRA.paused) {
+            AudioGRA.play();
+            icono.innerText = "⏸"; // Cambia a símbolo de Pausa
+        } else {
+            AudioGRA.pause();
+            icono.innerText = "▶"; // Cambia a símbolo de Play
+        }
+    });
+    //Reset---------------------------------------------------
+    btnReset.addEventListener('click', () => {
+        AudioGRA.currentTime = 0;
+    });
+
+    //Volume---------------------------------------------------
+    btnVolume.addEventListener('click', () => {
+        if (AudioGRA.volume > 0) {
+            AudioGRA.volume = 0;
+            controlVolumen.value = 0;
+        } else {
+            AudioGRA.volume = 0.5;
+            controlVolumen.value = 0.5;
+        }
+    });
+    // Show audio controls on hover
+    btnVolume.addEventListener('mouseenter', () => {
+        controlVolumen.classList.remove('w-0', 'opacity-0');
+        controlVolumen.classList.add('w-24', 'opacity-100');
+    });
+    // Hide audio controls when not hovering
+    btnVolume.addEventListener('mouseleave', () => {
+        controlVolumen.classList.add('w-0', 'opacity-0');
+        controlVolumen.classList.remove('w-24', 'opacity-100');
+    });
+
+    controlVolumen.addEventListener('input', (evento) => {
+        AudioGRA.volume = evento.target.value;
+    });
+
+    //Reset icon when audio ends---------------------------------------------------
+    AudioGRA.addEventListener('ended', () => {
+        icono.innerText = "▶";
+    });
+
+
+    //References Audio Controls Timbal ----------------------------------------------------------------------------------
+    const AudioTIM = document.getElementById('AudioTIM');
+    const btnPause2 = document.getElementById('btnPause2');
+    const icono2 = document.getElementById('icono2');
+    const btnReset2 = document.getElementById('btnReset2');
+    const btnVolume2 = document.getElementById('btnVolume2');
+    const controlVolumen2 = document.getElementById('volumen2');
+
+    //Play/Pause---------------------------------------------------
+    btnPause2.addEventListener('click', () => {
+        if (AudioTIM.paused) {
+            AudioTIM.play();
+            icono2.innerText = "⏸"; // Cambia a símbolo de Pausa
+        } else {
+            AudioTIM.pause();
+            icono2.innerText = "▶"; // Cambia a símbolo de Play
+        }
+    });
+    //Reset---------------------------------------------------
+    btnReset2.addEventListener('click', () => {
+        AudioTIM.currentTime = 0;
+    });
+
+    //Volume---------------------------------------------------
+    btnVolume2.addEventListener('click', () => {
+        if (AudioTIM.volume > 0) {
+            AudioTIM.volume = 0;
+            controlVolumen2.value = 0;
+        } else {
+            AudioTIM.volume = 0.5;
+            controlVolumen2.value = 0.5;
+        }
+    });
+
+    // Show audio controls on hover
+    btnVolume2.addEventListener('mouseenter', () => {
+        controlVolumen2.classList.remove('w-0', 'opacity-0');
+        controlVolumen2.classList.add('w-24', 'opacity-100');
+    });
+    // Hide audio controls when not hovering
+    btnVolume2.addEventListener('mouseleave', () => {
+        controlVolumen2.classList.add('w-0', 'opacity-0');
+        controlVolumen2.classList.remove('w-24', 'opacity-100');
+    });
+
+    controlVolumen2.addEventListener('input', (evento) => {
+        AudioTIM.volume = evento.target.value;
+    });
+
+    //Reset icon when audio ends---------------------------------------------------
+    AudioTIM.addEventListener('ended', () => {
+        icono2.innerText = "▶";
     });
 
 </script>
